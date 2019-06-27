@@ -1,0 +1,15 @@
+﻿(Push 'cell' size to stack, multiplies top two items of stack, leaving result on stack)
+: cells cell * ;
+
+(Common shorthand for getting the displaying the value of a variable)
+: ? @ . ;
+
+(Increment)
+: +1 1 + ;
+
+(Decrement)
+: -1 1 - ;
+
+(Is zero)
+: ?0 0 = ;
+

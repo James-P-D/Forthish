@@ -1,0 +1,7 @@
+﻿fractional
+3.14 constant pi
+
+decimal
+42 constant meaning-of-life
+0 constant true
+-1 constant false
