@@ -7,7 +7,7 @@ A C# Console application for a Forth-like stack-based language
 
 The language is rarely used nowadays, although it has heavily influenced the desktop publishing language PostScript, and a number of Golfing languages such as [CJam](https://esolangs.org/wiki/CJam), [05AB1E](https://github.com/Adriandmen/05AB1E) and [GolfScript](http://www.golfscript.com/golfscript/).
 
-This implemention is by no means complete, nor matching the specific syntax of most Forth specifications. This decision is based on the somewhat unorthodox choice of keywords in most traditional implementions, most obviously the choice of using 'if..else..endif' rather than the traditional syntax of 'if..else..then' (where 'then' is actually an 'endif') which might confuse novice users. Other design decisions include introducing a '::' operator for redefining definitions, whereas in classic Forth, this isn't possible, with definitions only ever being set once.
+This implemention is by no means complete, nor matching the specific syntax of most Forth specifications. This decision is based on the somewhat unorthodox choice of keywords in most traditional implementions, most obviously the choice of using `if..else..endif` rather than the traditional syntax of `if..else..then` (where `then` is actually an `endif`) which might confuse novice users. Other design decisions include introducing a `::` operator for redefining definitions, whereas in classic Forth, this isn't possible, with definitions only ever being set once.
 
 For a more complete Forth implementation I'd recommend the [FastForth](https://osdn.net/projects/fast-forth/) compiler/interpreter and [J.V. Noble's A Beginner's Guide to Forth](http://galileo.phys.virginia.edu/classes/551.jvn.fall01/primer.htm)
 
@@ -67,7 +67,7 @@ The interpreter will respond with the following which indicates that the process
 > OK
 ```
 
-We can pop items from the stack and display them using '.':
+We can pop items from the stack and display them using `.`:
 
 ```
 .
@@ -88,7 +88,7 @@ We can push multiple items on a single line:
 > 5 4 3 2 1 OK
 ```
 
-Note that because of the 'last-in-first-out' nature of stacks, the numbers are read back to us in the opposite order to which they were added.
+Note that because of the last-in-first-out nature of stacks, the numbers are read back to us in the opposite order to which they were added.
 
 We can only pop items from the stack if the stack is not empty. If we attempt to pop more items than there are available, we'll see a stack underflow exception:
 
@@ -97,7 +97,7 @@ We can only pop items from the stack if the stack is not empty. If we attempt to
 > 33 22 11 ERROR: Stack Underflow
 ```
 
-In the above we successfully push values to the stack, then used the '.' operator to pop and display them. The interpreter was able to pop and display the first three values, but when it tried for the fourth item, we generated an exception.
+In the above we successfully push values to the stack, then used the `.` operator to pop and display them. The interpreter was able to pop and display the first three values, but when it tried for the fourth item, we generated an exception.
 
 We can also push and pop in a single line:
 
@@ -115,7 +115,7 @@ In Forth comments are places between parentheses:
 
 In the above example, 1 and 2 are pushed to the stack, but then the interpretor encounters a comment, so it stops processing until the brackets are closed. Having reached the end of the comment, the interpreter continues and pushes the number 5 before popping each item and displaying it.
 
-Usually Forth will process input as soon as enter is pressed. If you wish to write a multi-line program you must use the '\' character to terminate each line. The interpreter will not begin execution until a line is entered which doesn't terminate in '\':
+Usually Forth will process input as soon as enter is pressed. If you wish to write a multi-line program you must use the `\` character to terminate each line. The interpreter will not begin execution until a line is entered which doesn't terminate in `\`:
 
 ```
 1 2 3 4 \
@@ -125,7 +125,7 @@ Usually Forth will process input as soon as enter is pressed. If you wish to wri
 > 8 7 6 5 4 3 2 1 OK
 ```
 
-So far we have only been pushing integers to our stack, but it is also possible to push floats, characters and hexadecimal numbers using the commands 'fractional', 'char', and 'hex'. For example:
+So far we have only been pushing integers to our stack, but it is also possible to push floats, characters and hexadecimal numbers using the commands `fractional`, `char`, and `hex`. For example:
 
 ```
 hex bd34 .
@@ -163,14 +163,14 @@ decimal .
 
 ## Output String
 
-We have already seen how to pop and display the top of the stack using the '.' operator, but you may also find you need to display strings. This is accomplished with the '.""' operator. For example:
+We have already seen how to pop and display the top of the stack using the `.` operator, but you may also find you need to display strings. This is accomplished with the `.""` operator. For example:
 
 ```
 ."Hello, world! "
 > Hello, world! OK
 ```
 
-We can also add new-lines with the carriage-return command 'cr':
+We can also add new-lines with the carriage-return command `cr`:
 
 ```
 cr ."Hello, " cr ."world!" cr
@@ -184,49 +184,49 @@ OK
 
 Since Forth is a stack-based language, there are multiple built-in operators for manipulating the stack.
 
-'dup' duplicates the top value on the stack and pushes it again:
+`dup` duplicates the top value on the stack and pushes it again:
 
 ```
 1 2 3 4 dup . . . . .
 > 4 4 3 2 1 OK
 ```
 
-'swap' swaps the top two items on the stack:
+`swap` swaps the top two items on the stack:
 
 ```
 1 2 3 4 swap . . . .
 > 3 4 2 1 OK
 ```
 
-'drop' deletes the top of the stack:
+`drop` deletes the top of the stack:
 
 ```
 1 2 3 4 drop . . .
 > 3 2 1 OK
 ```
 
-'rot' rotates the top three items:
+`rot` rotates the top three items:
 
 ```
 1 2 3 4 rot . . .
 > 2 4 3 1 OK
 ```
 
-'over' duplicates the second item on the stack and pushes it to the top:
+`over` duplicates the second item on the stack and pushes it to the top:
 
 ```
 1 2 3 4 over . . . . .
 > 3 4 3 2 1 OK
 ```
 
-'tuck' duplicates the top item on the stack and pushes it below the second:
+`tuck` duplicates the top item on the stack and pushes it below the second:
 
 ```
 1 2 3 4 tuck . . . . .
 > 4 3 4 2 1 OK
 ```
 
-'pick' accepts a parameter 'N' which is then used to duplicate the Nth element onto the top of the stack. Note that '0 pick' is effectively the same as 'rot':
+`pick` accepts a parameter `N` which is then used to duplicate the Nth element onto the top of the stack. Note that `0 pick` is effectively the same as `rot`:
 
 ```
 1 2 3 4 5 6 7 8 9 10
@@ -237,7 +237,7 @@ Since Forth is a stack-based language, there are multiple built-in operators for
 > 5 10 9 8 7 6 5 4 3 2 1 OK
 ```
 
-'roll' accepts a paramter 'N' which is then removed from the stack and placed at the top:
+`roll` accepts a paramter `N` which is then removed from the stack and placed at the top:
 
 ```
 1 2 3 4 5 6 7 8 9 10
@@ -275,7 +275,7 @@ We can also do integer division/modulus:
 
 ## Logical Operators
 
-In Forth, 'true' is considered to be zero and 'false' as '-1'. Infact, both 'true' and 'false' are defined an constants in the interpreter (more on Constants, Variables and Values later on.) We can confirm the values of 'true' and 'false' easily enough:
+In Forth, `true` is considered to be zero and `false` as `-1`. Infact, both `true` and `false` are defined an constants in the interpreter (more on Constants, Variables and Values later on.) We can confirm the values of `true` and `false` easily enough:
 
 ```
 true .
@@ -284,7 +284,7 @@ false .
 > -1 OK
 ```
 
-We also have the basic equality operators '=', '!=', '<', '>', '<=', '>=', all of which pop two items from the stack and push the result:
+We also have the basic equality operators `=`, `!=`, `<`, `>`, `<=`, `>=`, all of which pop two items from the stack and push the result:
 
 ```
 3 4 =
@@ -295,7 +295,7 @@ We also have the basic equality operators '=', '!=', '<', '>', '<=', '>=', all o
 > -1 OK
 ```
 
-Finally, we have the usual logical operators 'and', 'or' and 'not' respectively:
+Finally, we have the usual logical operators `and`, `or` and `not` respectively:
 
 ```
 true true and .
@@ -314,7 +314,7 @@ false not .
 
 ## Definitions
 
-For operations that occur frequently, we can create definitions. These take the form ': N C1..CN ;' where N is the name of the definition, and C1 to CN are a series of commands.
+For operations that occur frequently, we can create definitions. These take the form `: N C1..CN ;` where N is the name of the definition, and C1 to CN are a series of commands.
 
 For example, to create a definition that squares a number we would write:
 
@@ -352,7 +352,7 @@ We can then use the following:
 > 81 OK
 ```
 
-If you want to change a definition, you must use the '::' operator:
+If you want to change a definition, you must use the `::` operator:
 
 ```
 : cubed dup * dup * ;
@@ -369,20 +369,20 @@ It is also possible to call definitions recursively, but watch out for overflowi
 : add1 1 + dup . add1 ;
 ```
 
-If we now push zero to the stack and call 'add1', we see the following:
+If we now push zero to the stack and call `add1`, we see the following:
 
 ```
 0 add1
 > 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 ERROR: Processing stack overflow
 ```
 
-We will learn how to avoid this by using base cases for recursive calls to definitions when we discuss the 'if..else..endif' commands.
+We will learn how to avoid this by using base cases for recursive calls to definitions when we discuss the `if..else..endif` commands.
 
-Finally, it is possible to get details of all existing definitions with the 'viewdefinitions' command.
+Finally, it is possible to get details of all existing definitions with the `viewdefinitions` command.
 
 ## If..else..endif
 
-The 'if..endif' construct pops a value from the stack, and if true will execute all commands until it reaches the 'endif':
+The `if..endif` construct pops a value from the stack, and if true will execute all commands until it reaches the `endif`:
 
 ```
 : ispositive 0 > if ."positive" cr endif ;
@@ -393,7 +393,7 @@ The 'if..endif' construct pops a value from the stack, and if true will execute 
 > OK
 ```
 
-When we run the program it correctly outputted 'positive' for 5 but it did nothing when 'if' evaluated to false. If we want to execute commands when the 'if' fails, we can use 'else':
+When we run the program it correctly outputted `positive` for 5 but it did nothing when `if` evaluated to false. If we want to execute commands when the `if` fails, we can use `else`:
 
 ```
 :: ispositive 0 > if ."positive" else ."negative" endif cr ;
@@ -404,7 +404,7 @@ When we run the program it correctly outputted 'positive' for 5 but it did nothi
 > negative OK
 ```
 
-It is possible to have 'if..else..if..' ladders:
+It is possible to have `if..else..if..` ladders:
 
 ```
 :: ispositive              \
@@ -425,7 +425,7 @@ endif ;
 > zero OK
 ```
 
-Finally, it is possible to have 'if's within other 'if's:
+Finally, it is possible to have `if`s within other `if`s:
 
 ```
 : size                           \
@@ -456,41 +456,41 @@ drop ;
 
 ## Loop..endloop and Repeat..until
 
-'loop..endloop' constucts accept three parameters specifying the end condition, the start condition, and the increment:
+`loop..endloop` constucts accept three parameters specifying the end condition, the start condition, and the increment:
 
 ```
 10 0 2 loop swap dup . swap endloop
 > 0 2 4 6 8 OK
 ```
 
-'repeat..until' constructs repeat a sequence of commands until 'true' is on the stack:
+`repeat..until` constructs repeat a sequence of commands until `true` is on the stack:
 
 ```
 5 repeat ." hello! " 1 - dup 0 = until drop
 >  hello!  hello!  hello!  hello!  hello! OK
 ```
 
-In the above code, we push 5 to the stack and then repeat a sequence of commands that decrements the counter until it is zero. The final 'drop' removes the counter.
+In the above code, we push 5 to the stack and then repeat a sequence of commands that decrements the counter until it is zero. The final `drop` removes the counter.
 
 ## Variables, Values and Constants
 
-So far, all literal objects we have created have been put on the stack. For global objects such as variables, values, constants and arrays, we will need to allocate space in memory whenever they are declared. This Forth implementation has been designed for 32-bit memory allocations, which means all values will be stored in 4 byte chunks called a 'cell'. We will need to know the size of cells quite frequently, so there is an in-built constant at our disposal:
+So far, all literal objects we have created have been put on the stack. For global objects such as variables, values, constants and arrays, we will need to allocate space in memory whenever they are declared. This Forth implementation has been designed for 32-bit memory allocations, which means all values will be stored in 4 byte chunks called a `cell`. We will need to know the size of cells quite frequently, so there is an in-built constant at our disposal:
 
 ```
 cell .
 > 4 OK
 ```
 
-We also have a command called 'here' which will push to the stack the current memory pointer. When you first interrogate the value of 'here', you will be told where the current memory pointer is:
+We also have a command called `here` which will push to the stack the current memory pointer. When you first interrogate the value of `here`, you will be told where the current memory pointer is:
 
 ```
 here .
 > 16 OK
 ```
 
-'here' will continue to be 16 until we start declaring objects, at which point we should start to see the pointer increment. More on that shortly..
+`here` will continue to be 16 until we start declaring objects, at which point we should start to see the pointer increment. More on that shortly..
 
-For many programming applications we may need values which do not change throughout the duration of the program. To achieve this we use the 'constant' keyword which pops a value from the stack and must then be proceeded by a valid name:
+For many programming applications we may need values which do not change throughout the duration of the program. To achieve this we use the `constant` keyword which pops a value from the stack and must then be proceeded by a valid name:
 
 ```
 20 constant twenty
@@ -511,21 +511,21 @@ Since constants should not change their value during the running of a program, a
 > ERROR: 'twenty' is already defined
 ```
 
-Having created our constant, if we interrogate 'here' again, we will see that the memory pointer has been increased by the size of 1 cell (4 bytes):
+Having created our constant, if we interrogate `here` again, we will see that the memory pointer has been increased by the size of 1 cell (4 bytes):
 
 ```
 here .
 > 20 OK
 ```
 
-For creating named-objects whose values can change, we can use variables. To declare a variable called 'my_var' we would use:
+For creating named-objects whose values can change, we can use variables. To declare a variable called `my_var` we would use:
 
 ```
 variable my_var
 > OK
 ```
 
-Again, if we interrogate 'here' we will see that the memory pointer has been incremented again:
+Again, if we interrogate `here` we will see that the memory pointer has been incremented again:
 
 ```
 here.
@@ -539,41 +539,41 @@ my_var .
 > 20 OK
 ```
 
-This is because the value of the variable is the pointer to a memory location, in this case 20, which was by no small coincidence, the value of 'here' before we declared 'my_var'.
+This is because the value of the variable is the pointer to a memory location, in this case 20, which was by no small coincidence, the value of `here` before we declared `my_var`.
 
-To set the value of the cell pointed to by a variable, we use the '!' (store) command which expects two values on the stack specifying the value to store, and the memory location of the variable:
+To set the value of the cell pointed to by a variable, we use the `!` (store) command which expects two values on the stack specifying the value to store, and the memory location of the variable:
 
 ```
 1234 my_var !
 > OK
 ```
 
-In the above code, we push the value 1234 to the stack, then push the value of 'my_var' (which is the memory location 20) and then call '!' to store the value in memory.
+In the above code, we push the value 1234 to the stack, then push the value of `my_var` (which is the memory location 20) and then call `!` to store the value in memory.
 
-To retrieve the value of a cell in memory, we can use the '@' (fetch) command, which pops a memory location from the stack, retrieves the value for that cell, and then pushes it to the stack:
+To retrieve the value of a cell in memory, we can use the `@` (fetch) command, which pops a memory location from the stack, retrieves the value for that cell, and then pushes it to the stack:
 
 ```
 my_var @ .
 > 1234 OK
 ```
 
-In the above code, we push the value of 'my_var' (the memory location 20) to the stack, then '@' pops it, grabs the value of the cell at this location, and pushes it to the stack. Finally, we pop the value off and display it.
+In the above code, we push the value of `my_var` (the memory location 20) to the stack, then `@` pops it, grabs the value of the cell at this location, and pushes it to the stack. Finally, we pop the value off and display it.
 
-If we don't care about memory locations, we can use 'value's instead of variables. The syntax for creating values is the same as for creating constants:
+If we don't care about memory locations, we can use `value`s instead of variables. The syntax for creating values is the same as for creating constants:
 
 ```
 2019 value this_year
 > OK
 ```
 
-We can then push the value of 'this_year' to the stack and display it:
+We can then push the value of `this_year` to the stack and display it:
 
 ```
 this_year .
 > 2019 OK
 ```
 
-We can change the value of 'this_year' with 'to':
+We can change the value of `this_year` with `to`:
 
 ```
 2020 to this_year
@@ -582,11 +582,11 @@ this_year .
 > 2020 OK
 ```
 
-Finally you can view all constants, variables and values with 'viewobjects'.
+Finally you can view all constants, variables and values with `viewobjects`.
 
 ## Arrays
 
-As already discussed, entering 'variable some_name' pushes the next available memory location to the stack. For the creation of arrays, Forth offers the 'cells' operator which takes one parameter and multiplies it by the size of 'cell' and pushes the result to the stack. Forth also offers the 'alloc' operator which takes two paramters, first the initial memory location, and then the number of bytes to allocate.
+As already discussed, entering `variable some_name` pushes the next available memory location to the stack. For the creation of arrays, Forth offers the `cells` operator which takes one parameter and multiplies it by the size of `cell` and pushes the result to the stack. Forth also offers the `alloc` operator which takes two paramters, first the initial memory location, and then the number of bytes to allocate.
 
 Using these two operators we can allocate a 6-cell array using the following:
 
@@ -595,7 +595,7 @@ variable my_array 5 cells allot
 > OK
 ```
 
-In the above, 'variable my_array' pushes the next available memory location to the stack, then 5 is pushed, then 'cells' pops the number 5 and memory location from the stack, multiplies them and pushes the result to the stack. Finally, 'allot' allocates the memory.
+In the above, `variable my_array` pushes the next available memory location to the stack, then 5 is pushed, then `cells` pops the number 5 and memory location from the stack, multiplies them and pushes the result to the stack. Finally, `allot` allocates the memory.
 
 We can now assign values to each cell in our array:
 
