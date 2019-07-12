@@ -287,11 +287,11 @@ false .
 We also have the basic equality operators `=`, `!=`, `<`, `>`, `<=`, `>=`, all of which pop two items from the stack and push the result:
 
 ```
-3 4 =
+3 4 = .
 > -1 OK
-3 4 !=
+3 4 != .
 > 0 OK
-3 4 <
+3 4 < .
 > -1 OK
 ```
 
@@ -334,7 +334,7 @@ We can even call the same definition multiple times:
 
 ```
 3 square square .
-> 81
+> 81 OK
 ```
 
 The above pushes 3 to the stack, then our definition squares it and pushes the result (9) to the stack, then the definition is called again and 9 is popped, squared, and the result (81) pushed. Finally we pop the final result and display it.
