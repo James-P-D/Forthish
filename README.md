@@ -1,6 +1,8 @@
 # Forthish
 A C# Console application for a Forth-like stack-based language
 
+![Screenshot](https://github.com/James-P-D/Forthish/blob/master/Screenshot.png)
+
 ## Introduction
 
 [Forth](https://en.wikipedia.org/wiki/Forth_(programming_language)) is an low-level, imperative stack-based language, invented in the late 1960s. Due to its small size and closeness to assembler, the language was often used for robotics where microprocessor memory was minimal.
