@@ -628,7 +628,7 @@ my_array 5 cells + @ .
 As previously mentioned, it is possible to call definitions recursively, but we need to have a base-case to ensure there isn't infinite recursion. Below is an example definition for calculating a factorial:
 
 ```
-:: factorial dup 1 > if dup 1 - factorial * else drop 1 endif ;
+:: factorial dup 1 < if dup 1 - factorial * else drop 1 endif ;
 > OK
 5 factorial .
 > 120 OK
