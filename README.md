@@ -7,11 +7,11 @@ A C# Console application for a Forth-like stack-based language
 
 [Forth](https://en.wikipedia.org/wiki/Forth_(programming_language)) is an low-level, imperative stack-based language, invented in the late 1960s. Due to its small size and closeness to assembler, the language was often used for robotics where microprocessor memory was minimal.
 
-The language is rarely used nowadays, although it has heavily influenced the desktop publishing language PostScript, and a number of Golfing languages such as [CJam](https://esolangs.org/wiki/CJam), [05AB1E](https://github.com/Adriandmen/05AB1E) and [GolfScript](http://www.golfscript.com/golfscript/).
+The language is rarely used nowadays, although it has heavily influenced the desktop publishing language [PostScript](https://en.wikipedia.org/wiki/PostScript), and a number of Golfing languages such as [CJam](https://esolangs.org/wiki/CJam), [05AB1E](https://github.com/Adriandmen/05AB1E) and [GolfScript](http://www.golfscript.com/golfscript/).
 
 This implemention is by no means complete, nor matching the specific syntax of most Forth specifications. This decision is based on the somewhat unorthodox choice of keywords in most traditional implementions, most obviously the choice of using `if..else..endif` rather than the traditional syntax of `if..else..then` (where `then` is actually an `endif`) which might confuse novice users. Other design decisions include introducing a `::` operator for redefining definitions, whereas in classic Forth, this isn't possible, with definitions only ever being set once.
 
-For a more complete Forth implementation I'd recommend the [FastForth](https://osdn.net/projects/fast-forth/) compiler/interpreter and [J.V. Noble's A Beginner's Guide to Forth](http://galileo.phys.virginia.edu/classes/551.jvn.fall01/primer.htm)
+For a more complete Forth implementation I'd recommend the [FastForth](https://osdn.net/projects/fast-forth/) compiler/interpreter and [J.V. Noble's A Beginner's Guide to Forth](http://galileo.phys.virginia.edu/classes/551.jvn.fall01/primer.htm).
 
 ## Contents
 
