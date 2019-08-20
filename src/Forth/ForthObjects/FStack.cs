@@ -185,7 +185,7 @@ namespace Forth
       FInteger intConstant1 = new FInteger(BitConverter.ToInt32(Stack.Pop().Bytes, 0));
       if (token.Equals(Constants.NOT))
       {
-        Stack.Push(new Cell(new FInteger(intConstant1.Value == Constants.TRUE ? Constants.TRUE : Constants.FALSE).GetBytes()));
+        Stack.Push(new Cell(new FInteger(intConstant1.Value != Constants.TRUE ? Constants.TRUE : Constants.FALSE).GetBytes()));
         return;
       }
 
