@@ -309,9 +309,9 @@ true false or .
 false false or .
 > -1 OK
 true not .
-> 0 OK
-false not .
 > -1 OK
+false not .
+> 0 OK
 ```
 
 ## Definitions
