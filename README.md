@@ -7,7 +7,7 @@ A C# Console application for a Forth-like stack-based language
 
 [Forth](https://en.wikipedia.org/wiki/Forth_(programming_language)) is an low-level, imperative stack-based language, invented in the late 1960s. Due to its small size and closeness to assembler, the language was often used for robotics where microprocessor memory was minimal.
 
-The language is rarely used nowadays, although it has heavily influenced the desktop publishing language [PostScript](https://en.wikipedia.org/wiki/PostScript), and a number of Golfing languages such as [CJam](https://esolangs.org/wiki/CJam), [05AB1E](https://github.com/Adriandmen/05AB1E) and [GolfScript](http://www.golfscript.com/golfscript/).
+The language is rarely used nowadays, although it has heavily influenced the desktop publishing language [PostScript](https://en.wikipedia.org/wiki/PostScript), and a number of [Golfing](https://codegolf.stackexchange.com/) languages such as [CJam](https://esolangs.org/wiki/CJam), [05AB1E](https://github.com/Adriandmen/05AB1E) and [GolfScript](http://www.golfscript.com/golfscript/).
 
 This implemention is by no means complete, nor matching the specific syntax of most Forth specifications. This decision is based on the somewhat unorthodox choice of keywords in most traditional implementions, most obviously the choice of using `if..else..endif` rather than the traditional syntax of `if..else..then` (where `then` is actually an `endif`) which might confuse novice users. Other design decisions include introducing a `::` operator for redefining definitions, whereas in classic Forth, this isn't possible, with definitions only ever being set once.
 
@@ -115,7 +115,7 @@ In Forth comments are places between parentheses:
 > 5 2 1 OK
 ```
 
-In the above example, 1 and 2 are pushed to the stack, but then the interpretor encounters a comment, so it stops processing until the brackets are closed. Having reached the end of the comment, the interpreter continues and pushes the number 5 before popping each item and displaying it.
+In the above example, `1` and `2` are pushed to the stack, but then the interpretor encounters a comment, so it stops processing until the brackets are closed. Having reached the end of the comment, the interpreter continues and pushes the number `5` before popping each item and displaying it.
 
 Usually Forth will process input as soon as enter is pressed. If you wish to write a multi-line program you must use the `\` character to terminate each line. The interpreter will not begin execution until a line is entered which doesn't terminate in `\`:
 
@@ -257,14 +257,14 @@ There are multiple mathematical operators which pop two items from the stack, pe
 > 35 OK
 ```
 
-You will need to think carefully about the order in which you push numbers and operators in Forth since we have no concept of operator-precedence (multiplication binds closer than addition in most C-like languages), and no option of using parentheses. If we wished to compute (3 + 4) * (-5 + 13) we would need to enter the following:
+You will need to think carefully about the order in which you push numbers and operators in Forth since we have no concept of operator-precedence (multiplication binds closer than addition in most C-like languages), and no option of using parentheses. If we wished to compute `(3 + 4) * (-5 + 13)` we would need to enter the following:
 
 ```
 3 4 + -5 13 + * .
 > 56 OK
 ```
 
-What's happening here? First we push 3 and 4, then the addition operator pops and adds them together before putting the result (7) on the stack. Then -5 and 13 are pushed and another operator pops them, adds them, and pushes the result (8) to the stack. Finally, the multiplication operator pops our two calculations, multiplies them and puts the final result 56) back on the stack before popping it and displaying it.
+What's happening here? First we push `3` and `4`, then the addition operator pops and adds them together before putting the result (`7`) on the stack. Then `-5` and `13` are pushed and another operator pops them, adds them, and pushes the result (`8`) to the stack. Finally, the multiplication operator pops our two calculations, multiplies them and puts the final result `56`) back on the stack before popping it and displaying it.
 
 We can also do integer division/modulus:
 
@@ -316,7 +316,7 @@ false not .
 
 ## Definitions
 
-For operations that occur frequently, we can create definitions. These take the form `: N C1..CN ;` where N is the name of the definition, and C1 to CN are a series of commands.
+For operations that occur frequently, we can create definitions. These take the form `: N C1..CN ;` where `N` is the name of the definition, and `C1` to `CN` are a series of commands.
 
 For example, to create a definition that squares a number we would write:
 
@@ -325,7 +325,7 @@ For example, to create a definition that squares a number we would write:
 > OK
 ```
 
-Our definition duplicates whatever is on the stack and adds it to the stack, then the multiplication operator pops the top two values, multiples them, and pushes the result. To square the value 3 and then display it we would use the following:
+Our definition duplicates whatever is on the stack and adds it to the stack, then the multiplication operator pops the top two values, multiples them, and pushes the result. To square the value `3` and then display it we would use the following:
 
 ```
 3 square .
@@ -339,7 +339,7 @@ We can even call the same definition multiple times:
 > 81 OK
 ```
 
-The above pushes 3 to the stack, then our definition squares it and pushes the result (9) to the stack, then the definition is called again and 9 is popped, squared, and the result (81) pushed. Finally we pop the final result and display it.
+The above pushes `3` to the stack, then our definition squares it and pushes the result (`9`) to the stack, then the definition is called again and `9` is popped, squared, and the result (`81`) pushed. Finally we pop the final result and display it.
 
 Definitions can also call other definitions, so we can easily make a definition for cubing values:
 
@@ -365,13 +365,13 @@ If you want to change a definition, you must use the `::` operator:
 > 81 OK
 ```
 
-It is also possible to call definitions recursively, but watch out for overflowing the processing stack. For example, the following definition adds 1 to the item on the stack, displays it, then calls itself again:
+It is also possible to call definitions recursively, but watch out for overflowing the processing stack. For example, the following definition adds `1` to the item on the stack, displays it, then calls itself again:
 
 ```
 : add1 1 + dup . add1 ;
 ```
 
-If we now push zero to the stack and call `add1`, we see the following:
+If we now push `0` to the stack and call `add1`, we see the following:
 
 ```
 0 add1
@@ -395,7 +395,7 @@ The `if..endif` construct pops a value from the stack, and if true will execute 
 > OK
 ```
 
-When we run the program it correctly outputted `positive` for 5 but it did nothing when `if` evaluated to false. If we want to execute commands when the `if` fails, we can use `else`:
+When we run the program it correctly outputted `positive` for `5` but it did nothing when `if` evaluated to false. If we want to execute commands when the `if` fails, we can use `else`:
 
 ```
 :: ispositive 0 > if ."positive" else ."negative" endif cr ;
@@ -472,7 +472,7 @@ drop ;
 >  hello!  hello!  hello!  hello!  hello! OK
 ```
 
-In the above code, we push 5 to the stack and then repeat a sequence of commands that decrements the counter until it is zero. The final `drop` removes the counter.
+In the above code, we push `5` to the stack and then repeat a sequence of commands that decrements the counter until it is zero. The final `drop` removes the counter.
 
 ## Variables, Values and Constants
 
@@ -550,7 +550,7 @@ To set the value of the cell pointed to by a variable, we use the `!` (store) co
 > OK
 ```
 
-In the above code, we push the value 1234 to the stack, then push the value of `my_var` (which is the memory location 20) and then call `!` to store the value in memory.
+In the above code, we push the value `1234` to the stack, then push the value of `my_var` (which is the memory location `20`) and then call `!` to store the value in memory.
 
 To retrieve the value of a cell in memory, we can use the `@` (fetch) command, which pops a memory location from the stack, retrieves the value for that cell, and then pushes it to the stack:
 
@@ -559,7 +559,7 @@ my_var @ .
 > 1234 OK
 ```
 
-In the above code, we push the value of `my_var` (the memory location 20) to the stack, then `@` pops it, grabs the value of the cell at this location, and pushes it to the stack. Finally, we pop the value off and display it.
+In the above code, we push the value of `my_var` (the memory location `20`) to the stack, then `@` pops it, grabs the value of the cell at this location, and pushes it to the stack. Finally, we pop the value off and display it.
 
 If we don't care about memory locations, we can use `value`s instead of variables. The syntax for creating values is the same as for creating constants:
 
@@ -597,7 +597,7 @@ variable my_array 5 cells allot
 > OK
 ```
 
-In the above, `variable my_array` pushes the next available memory location to the stack, then 5 is pushed, then `cells` pops the number 5 and memory location from the stack, multiplies them and pushes the result to the stack. Finally, `allot` allocates the memory.
+In the above, `variable my_array` pushes the next available memory location to the stack, then `5` is pushed, then `cells` pops the number 5 and memory location from the stack, multiplies them and pushes the result to the stack. Finally, `allot` allocates the memory.
 
 We can now assign values to each cell in our array:
 
