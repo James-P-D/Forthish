@@ -1,22 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-namespace Forth
+namespace Forth.ForthObjects
 {
-  public class FInteger
-  {
-    public FInteger(Int32 value)
+    public class FInteger
     {
-      this.Value = value;
-    }
+        public FInteger(Int32 value)
+        {
+            this.Value = value;
+        }
 
-    public Int32 Value { get; set; }
+        public Int32 Value { get; set; }
 
-    public byte[] GetBytes()
-    {
-      return BitConverter.GetBytes(this.Value);
+        public byte[] GetBytes()
+        {
+            return BitConverter.GetBytes(this.Value);
+        }
     }
-  }
 }

@@ -1,22 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-namespace Forth
+namespace Forth.ForthObjects
 {
-  public class FFloat
-  {
-    public FFloat(float value)
+    public class FFloat
     {
-      this.Value = value;
-    }
+        public FFloat(float value)
+        {
+            this.Value = value;
+        }
 
-    public float Value { get; set; }
+        public float Value { get; set; }
 
-    public byte[] GetBytes()
-    {
-      return BitConverter.GetBytes(this.Value);
+        public byte[] GetBytes()
+        {
+            return BitConverter.GetBytes(this.Value);
+        }
     }
-  }
 }

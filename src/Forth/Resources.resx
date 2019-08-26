@@ -181,4 +181,40 @@
   <data name="WrongCellSize" xml:space="preserve">
     <value>Incorrect Cell size</value>
   </data>
+  <data name="Program_Main_Forth_Interpreter" xml:space="preserve">
+    <value>Forth Interpreter</value>
+  </data>
+  <data name="Program_Main_Press__ESC__to_exit" xml:space="preserve">
+    <value>Press &lt;ESC&gt; to exit</value>
+  </data>
+  <data name="Program_Main_Ready_" xml:space="preserve">
+    <value>Ready!</value>
+  </data>
+  <data name="Program_Main__Prompt" xml:space="preserve">
+    <value>&gt; </value>
+  </data>
+  <data name="Program_Main_OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Program_Main_Exiting" xml:space="preserve">
+    <value>Exiting</value>
+  </data>
+  <data name="Program_LoadResourceFile_Loading_resource___0_" xml:space="preserve">
+    <value>Loading resource: {0}</value>
+  </data>
+  <data name="Program_LoadSourceFile_Loading_source_file___0_" xml:space="preserve">
+    <value>Loading source file: {0}</value>
+  </data>
+  <data name="Executor_OutputValue_Space" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Executor_OutputError_ERROR___0_" xml:space="preserve">
+    <value>ERROR: {0}</value>
+  </data>
+  <data name="Executor_ProcessCommands__StartDefinition" xml:space="preserve">
+    <value>{0} </value>
+  </data>
+  <data name="Executor_ProcessCommands__Key" xml:space="preserve">
+    <value>{0}</value>
+  </data>
 </root>

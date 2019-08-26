@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
-namespace Forth
+namespace Forth.ForthObjects.Commands
 {
-  public class LoopCommand : Command
-  {
-    public LoopCommand()
-      : base(Constants.LOOP)
+    public class LoopCommand : Command
     {
-      this.LoopCommands = new List<Command>();
-    }
+        public LoopCommand()
+            : base(Constants.Loop)
+        {
+            this.LoopCommands = new List<Command>();
+        }
 
-    public List<Command> LoopCommands { get; private set; }
-  }
+        public List<Command> LoopCommands { get; }
+    }
 }

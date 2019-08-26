@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
-namespace Forth
+namespace Forth.ForthObjects.Commands
 {
-  public class RepeatCommand : Command
-  {
-    public RepeatCommand()
-      : base(Constants.REPEAT)
+    public class RepeatCommand : Command
     {
-      this.RepeatCommands = new List<Command>();
-    }
+        public RepeatCommand()
+            : base(Constants.Repeat)
+        {
+            this.RepeatCommands = new List<Command>();
+        }
 
-    public List<Command> RepeatCommands { get; private set; }
-  }
+        public List<Command> RepeatCommands { get; }
+    }
 }

@@ -109,6 +109,42 @@ namespace Forth {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ERROR: {0}.
+        /// </summary>
+        internal static string Executor_OutputError_ERROR___0_ {
+            get {
+                return ResourceManager.GetString("Executor_OutputError_ERROR___0_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  .
+        /// </summary>
+        internal static string Executor_OutputValue_Space {
+            get {
+                return ResourceManager.GetString("Executor_OutputValue_Space", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0}.
+        /// </summary>
+        internal static string Executor_ProcessCommands__Key {
+            get {
+                return ResourceManager.GetString("Executor_ProcessCommands__Key", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} .
+        /// </summary>
+        internal static string Executor_ProcessCommands__StartDefinition {
+            get {
+                return ResourceManager.GetString("Executor_ProcessCommands__StartDefinition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Expected &apos;{0}.
         /// </summary>
         internal static string Expected_ {
@@ -231,6 +267,78 @@ namespace Forth {
         internal static string ProcessingStackOverflow {
             get {
                 return ResourceManager.GetString("ProcessingStackOverflow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Loading resource: {0}.
+        /// </summary>
+        internal static string Program_LoadResourceFile_Loading_resource___0_ {
+            get {
+                return ResourceManager.GetString("Program_LoadResourceFile_Loading_resource___0_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Loading source file: {0}.
+        /// </summary>
+        internal static string Program_LoadSourceFile_Loading_source_file___0_ {
+            get {
+                return ResourceManager.GetString("Program_LoadSourceFile_Loading_source_file___0_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &gt; .
+        /// </summary>
+        internal static string Program_Main__Prompt {
+            get {
+                return ResourceManager.GetString("Program_Main__Prompt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exiting.
+        /// </summary>
+        internal static string Program_Main_Exiting {
+            get {
+                return ResourceManager.GetString("Program_Main_Exiting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Forth Interpreter.
+        /// </summary>
+        internal static string Program_Main_Forth_Interpreter {
+            get {
+                return ResourceManager.GetString("Program_Main_Forth_Interpreter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OK.
+        /// </summary>
+        internal static string Program_Main_OK {
+            get {
+                return ResourceManager.GetString("Program_Main_OK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Press &lt;ESC&gt; to exit.
+        /// </summary>
+        internal static string Program_Main_Press__ESC__to_exit {
+            get {
+                return ResourceManager.GetString("Program_Main_Press__ESC__to_exit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ready!.
+        /// </summary>
+        internal static string Program_Main_Ready_ {
+            get {
+                return ResourceManager.GetString("Program_Main_Ready_", resourceCulture);
             }
         }
         
