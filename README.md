@@ -163,7 +163,7 @@ decimal .
 > 43981 OK
 ```
 
-## Output String
+## 2. Output String
 
 We have already seen how to pop and display the top of the stack using the `.` operator, but you may also find you need to display strings. This is accomplished with the `.""` operator. For example:
 
@@ -182,7 +182,7 @@ world!
 OK
 ```
 
-## Stack Operators
+## 3. Stack Operators
 
 Since Forth is a stack-based language, there are multiple built-in operators for manipulating the stack.
 
@@ -248,7 +248,7 @@ Since Forth is a stack-based language, there are multiple built-in operators for
 > 7 10 9 8 6 5 4 3 2 1 OK
 ```
 
-## Maths Operators
+## 4. Maths Operators
 
 There are multiple mathematical operators which pop two items from the stack, perform an operation, and push the result back to the stack:
 
@@ -275,7 +275,7 @@ We can also do integer division/modulus:
 > 3 OK
 ```
 
-## Logical Operators
+## 5. Logical Operators
 
 In Forth, `true` is considered to be zero and `false` as `-1`. Infact, both `true` and `false` are defined an constants in the interpreter (more on Constants, Variables and Values later on.) We can confirm the values of `true` and `false` easily enough:
 
@@ -314,7 +314,7 @@ false not .
 > 0 OK
 ```
 
-## Definitions
+## 6. Definitions
 
 For operations that occur frequently, we can create definitions. These take the form `: N C1..CN ;` where `N` is the name of the definition, and `C1` to `CN` are a series of commands.
 
@@ -382,7 +382,7 @@ We will learn how to avoid this by using base cases for recursive calls to defin
 
 Finally, it is possible to get details of all existing definitions with the `viewdefinitions` command.
 
-## If..else..endif
+## 7. If..else..endif
 
 The `if..endif` construct pops a value from the stack, and if true will execute all commands until it reaches the `endif`:
 
@@ -456,7 +456,7 @@ drop ;
 > very big OK
 ```
 
-## Loop..endloop and Repeat..until
+## 8. Loop..endloop and Repeat..until
 
 `loop..endloop` constucts accept three parameters specifying the end condition, the start condition, and the increment:
 
@@ -474,7 +474,7 @@ drop ;
 
 In the above code, we push `5` to the stack and then repeat a sequence of commands that decrements the counter until it is zero. The final `drop` removes the counter.
 
-## Variables, Values and Constants
+## 9. Variables, Values and Constants
 
 So far, all literal objects we have created have been put on the stack. For global objects such as variables, values, constants and arrays, we will need to allocate space in memory whenever they are declared. This Forth implementation has been designed for 32-bit memory allocations, which means all values will be stored in 4 byte chunks called a `cell`. We will need to know the size of cells quite frequently, so there is an in-built constant at our disposal:
 
@@ -586,7 +586,7 @@ this_year .
 
 Finally you can view all constants, variables and values with `viewobjects`.
 
-## Arrays
+## 10. Arrays
 
 As already discussed, entering `variable some_name` pushes the next available memory location to the stack. For the creation of arrays, Forth offers the `cells` operator which takes one parameter and multiplies it by the size of `cell` and pushes the result to the stack. Forth also offers the `alloc` operator which takes two paramters, first the initial memory location, and then the number of bytes to allocate.
 
@@ -623,7 +623,7 @@ my_array 5 cells + @ .
 > 11 22 33 44 55 66 OK
 ```
 
-## Example Programs
+## 11. Example Programs
 
 As previously mentioned, it is possible to call definitions recursively, but we need to have a base-case to ensure there isn't infinite recursion. Below is an example definition for calculating a factorial:
 
