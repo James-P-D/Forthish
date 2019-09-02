@@ -27,7 +27,7 @@ For a more complete Forth implementation I'd recommend the [FastForth](https://o
 10. Arrays
 11. Example Programs
 
-## Basics
+## 1. Basics
 
 This Forth interpreter has been implemented as an interactive console application. After running you should see something like the following:
 
