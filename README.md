@@ -5,7 +5,7 @@ A C# Console application for a Forth-like stack-based language
 
 ## Introduction
 
-[Forth](https://en.wikipedia.org/wiki/Forth_(programming_language)) is an low-level, imperative stack-based language, invented in the late 1960s. Due to its small size and closeness to assembler, the language was often used for robotics and astronomy (most famously at (NASA)[https://www.forth.com/resources/space-applications/]) in applications where microprocessor memory was minimal.
+[Forth](https://en.wikipedia.org/wiki/Forth_(programming_language)) is an low-level, imperative stack-based language, invented in the late 1960s. Due to its small size and closeness to assembler, the language was often used for robotics and astronomy, most famously at [NASA](https://www.forth.com/resources/space-applications/), in applications where microprocessor memory was minimal.
 
 The language is rarely used nowadays, although it has heavily influenced a number of [Golfing](https://codegolf.stackexchange.com/) languages such as [CJam](https://esolangs.org/wiki/CJam), [05AB1E](https://github.com/Adriandmen/05AB1E) and [GolfScript](http://www.golfscript.com/golfscript/).
 
