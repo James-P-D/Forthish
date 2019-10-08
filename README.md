@@ -361,7 +361,7 @@ If you want to change a definition, you must use the `::` operator:
 > ERROR: 'cubed' is already defined
 :: cubed dup * dup * ;
 > OK
-3 cube .
+3 cubed .
 > 81 OK
 ```
 
