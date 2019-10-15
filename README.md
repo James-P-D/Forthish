@@ -269,9 +269,9 @@ What's happening here? First we push `3` and `4`, then the addition operator pop
 We can also do integer division/modulus:
 
 ```
-13 5 /
+13 5 / .
 > 2 OK
-13 5 mod
+13 5 mod .
 > 3 OK
 ```
 
