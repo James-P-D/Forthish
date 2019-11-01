@@ -41,7 +41,7 @@ Loading resource: Definitions
 Ready!
 ```
 
-It is also possible to load Forth source-code files by passing them as paramters to the executable:
+It is also possible to load Forth source-code files by passing them as parameters to the executable:
 
 ```
 C:\>Forth.exe c:\source\code.for
@@ -588,7 +588,7 @@ Finally you can view all constants, variables and values with `viewobjects`.
 
 ## Arrays
 
-As already discussed, entering `variable some_name` pushes the next available memory location to the stack. For the creation of arrays, Forth offers the `cells` operator which takes one parameter and multiplies it by the size of `cell` and pushes the result to the stack. Forth also offers the `alloc` operator which takes two paramters, first the initial memory location, and then the number of bytes to allocate.
+As already discussed, entering `variable some_name` pushes the next available memory location to the stack. For the creation of arrays, Forth offers the `cells` operator which takes one parameter and multiplies it by the size of `cell` and pushes the result to the stack. Forth also offers the `alloc` operator which takes two parameters, first the initial memory location, and then the number of bytes to allocate.
 
 Using these two operators we can allocate a 6-cell array using the following:
 
