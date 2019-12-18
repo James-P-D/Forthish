@@ -1,5 +1,5 @@
 # Forthish
-A C# Console application for a Forth-like stack-based language
+A C# Console application for a [Forth](https://en.wikipedia.org/wiki/Forth_(programming_language))-like stack-based language
 
 ![Screenshot](https://github.com/James-P-D/Forthish/blob/master/screenshot.gif)
 
