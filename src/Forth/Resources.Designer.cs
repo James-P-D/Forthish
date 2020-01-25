@@ -334,6 +334,15 @@ namespace Forth {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to quit.
+        /// </summary>
+        internal static string Program_Main_Quit {
+            get {
+                return ResourceManager.GetString("Program_Main_Quit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ready!.
         /// </summary>
         internal static string Program_Main_Ready_ {

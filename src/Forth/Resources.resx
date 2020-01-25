@@ -217,4 +217,7 @@
   <data name="Executor_ProcessCommands__Key" xml:space="preserve">
     <value>{0}</value>
   </data>
+  <data name="Program_Main_Quit" xml:space="preserve">
+    <value>quit</value>
+  </data>
 </root>

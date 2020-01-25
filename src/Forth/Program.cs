@@ -32,140 +32,38 @@ namespace Forth
             Console.WriteLine(Resources.Program_Main_Ready_);
             Console.WriteLine();
 
-            // Hide the cursor
-            Console.CursorVisible = false;
-
-            // Tedious stuff for manually handling Console Application keypresses 
-            int index = 0;
             string currentString = string.Empty;
-            string multiLineString = string.Empty;
-            List<string> previousCommands = new List<string>();
-            int previousCommandPointer = -1;
 
-            // Loop forever. User can only exit through <ESC> or killing the process
+            // Loop forever. User can only exit through 'quit' or killing the process
             for (;;)
             {
-                ConsoleKeyInfo consoleKeyInfo = Console.ReadKey();
-
-                switch (consoleKeyInfo.Key)
+                string newString = Console.ReadLine().Trim();
+                if (!IsMultiLine(newString))
                 {
-                    case ConsoleKey.UpArrow:
-                        if (previousCommandPointer > 0)
-                        {
-                            previousCommandPointer--;
-                            currentString = previousCommands[previousCommandPointer];
-                            index = currentString.Length;
-                            UpdateConsole(currentString);
-                        }
-
-                        break;
-                    case ConsoleKey.DownArrow:
-                        if (previousCommandPointer < previousCommands.Count - 1)
-                        {
-                            previousCommandPointer++;
-                            currentString = previousCommands[previousCommandPointer];
-                            index = currentString.Length;
-                            UpdateConsole(currentString);
-                        }
-
-                        break;
-                    case ConsoleKey.LeftArrow:
-                        if (index > 0)
-                        {
-                            index--;
-                        }
-
-                        break;
-                    case ConsoleKey.RightArrow:
-                        if (index < currentString.Length)
-                        {
-                            index++;
-                        }
-
-                        break;
-                    case ConsoleKey.Enter:
-                        string trimmedCurrentString = currentString.Trim();
-
-                        if (!string.IsNullOrEmpty(trimmedCurrentString))
-                        {
-                            if (!previousCommands.Contains(trimmedCurrentString))
-                            {
-                                previousCommands.Add(trimmedCurrentString);
-                                previousCommandPointer = previousCommands.Count;
-                            }
-
-                            if (IsMultiLine(trimmedCurrentString))
-                            {
-                                trimmedCurrentString = RemoveLastToken(trimmedCurrentString);
-                                multiLineString += " " + trimmedCurrentString;
-
-                                Console.WriteLine();
-                            }
-                            else
-                            {
-                                multiLineString += " " + trimmedCurrentString;
-
-                                Console.WriteLine();
-                                Console.Write(Resources.Program_Main__Prompt);
-                                if (Executor.ProcessString(multiLineString))
-                                {
-                                    Console.WriteLine(Resources.Program_Main_OK);
-                                }
-
-                                multiLineString = string.Empty;
-                            }
-
-                            currentString = string.Empty;
-                            index = 0;
-                        }
-
-                        break;
-                    case ConsoleKey.Backspace:
-                        if (index > 0)
-                        {
-                            index--;
-                            currentString = currentString.Remove(index, 1);
-                            UpdateConsole(currentString);
-                        }
-
-                        break;
-                    case ConsoleKey.Delete:
-                        if (currentString.Length > 0)
-                        {
-                            currentString = currentString.Remove(index, 1);
-                            UpdateConsole(currentString);
-                        }
-
-                        break;
-                    case ConsoleKey.Escape:
+                    if (newString.ToLower().Equals(Resources.Program_Main_Quit))
                     {
                         Console.WriteLine();
                         Console.WriteLine(Resources.Program_Main_Exiting);
                         Environment.Exit(0);
-                        break;
                     }
-                    default:
-                        currentString = currentString.Insert(index, consoleKeyInfo.KeyChar.ToString());
-                        index++;
-
-                        UpdateConsole(currentString);
-                        break;
+                    else
+                    {
+                        currentString += " " + newString;
+                        Console.Write(Resources.Program_Main__Prompt);
+                        if (Executor.ProcessString(currentString))
+                        {
+                            Console.WriteLine(Resources.Program_Main_OK);
+                        }
+                        currentString = string.Empty;
+                    }
+                }
+                else
+                {
+                    currentString += " " + RemoveLastToken(newString);
                 }
             }
         }
 
-        /// <summary>
-        /// Simple method to clear the current line on the Console and replace it with currentString
-        /// </summary>
-        /// <param name="currentString">Text to display on Console</param>
-        private static void UpdateConsole(string currentString)
-        {
-            int currentLineCursor = Console.CursorTop;
-            Console.SetCursorPosition(0, Console.CursorTop);
-            Console.Write(new string(' ', Console.WindowWidth));
-            Console.SetCursorPosition(0, currentLineCursor);
-            Console.Write(currentString);
-        }
 
         /// <summary>
         /// Check to see if input string terminates with a '\' character, which will
@@ -181,31 +79,25 @@ namespace Forth
                 return false;
             }
 
-            return currentString.Split(' ', '\t').Last().Equals(Constants.Continuation);
+            return currentString.EndsWith(Constants.Continuation);
         }
 
         /// <summary>
         /// Removes last token from string. Used for removing trailing '/' characters
         /// for multi-line input
         /// </summary>
-        /// <param name="currentString">Current input string</param>
+        /// <param name="someString">Current input string</param>
         /// <returns>Current input string minus whatever the last token was</returns>
-        private static string RemoveLastToken(string currentString)
+        private static string RemoveLastToken(string someString)
         {
             string retVal = string.Empty;
 
-            if (string.IsNullOrEmpty(currentString))
+            if (string.IsNullOrEmpty(someString))
             {
                 return retVal;
             }
 
-            string[] tokens = currentString.Split(' ', '\t');
-            for (int i = 0; i < tokens.Length - 1; i++)
-            {
-                retVal += tokens[i] + " ";
-            }
-
-            return retVal;
+            return someString.Substring(0, someString.Length - 1);
         }
 
         #region Resource loading
