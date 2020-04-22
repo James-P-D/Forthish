@@ -411,7 +411,7 @@ It is possible to have `if..else..if..` ladders:
 ```
 :: ispositive              \
 dup 0 < if                 \
-        ."positive " drop  \
+        ."positive "       \
 else 0 > if                \
             ."negative "   \
         else               \
